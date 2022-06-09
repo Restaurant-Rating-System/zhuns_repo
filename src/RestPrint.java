@@ -8,18 +8,22 @@ public class RestPrint {
 		System.out.print("오름/내림(1/2) default(오름차순) ");
 		int updown = sc.nextInt();
 
-		System.out.printf("%-7s\t %-10s\t %-10s\t %-5s\t %-10s\t %-10s\n", "상호명", "대표메뉴의 이름", "대표메뉴의 가격", "평점",
+		// 식당 리스트 프린트
+		System.out.printf("%-13s %-12s %-12s %-6s %-13s %-10s\n", "상호명", "대표메뉴의 이름", "대표메뉴의 가격", "평점",
 				"저장한 날짜",
 				"수정한 날짜");
 
 		printSortResult(resSort(rest, sortWay, updown));
 	}
 
+	// 정렬 방식 선정
 	public String[][] resSort(String[][] rest, int sortWay, int updown) {
 		String[][] afterSort = new String[rest.length][6];
 
 		switch (sortWay) {
 		case 1: {
+
+			// 선택정렬
 			afterSort = selectSort(rest, updown);
 			break;
 		}
@@ -29,6 +33,8 @@ public class RestPrint {
 		case 3: {
 			break;
 		}
+
+		// 저장된 순서로 출력
 		default:
 			afterSort = rest;
 		}
@@ -36,6 +42,7 @@ public class RestPrint {
 		return afterSort;
 	}
 
+	// 선택 정렬
 	public String[][] selectSort(String[][] rest, int updown) {
 
 		int resRow = 0;

@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class RestUpdate {
@@ -13,10 +14,18 @@ public class RestUpdate {
 			return;
 		}
 
-		System.out.println("수정할 전화번호 = ");
-		String phone = sc.next();
+		System.out.print("대표메뉴의 가격 = ");
+		String price = sc.next();
 
-		rest[index][2] = phone;
+		Calendar cal = Calendar.getInstance();
+
+		// 수정한 날짜 취득
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH) + 1; // 0 ~ 11
+		int day = cal.get(Calendar.DATE);
+
+		rest[index][2] = price;
+		rest[index][5] = year + "/" + month + "/" + day + "";
 
 		System.out.println("정상적으로 수정하였습니다");
 
