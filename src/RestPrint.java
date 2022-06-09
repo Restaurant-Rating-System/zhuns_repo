@@ -8,7 +8,8 @@ public class RestPrint {
 		System.out.print("오름/내림(1/2) default(오름차순) ");
 		int updown = sc.nextInt();
 
-		System.out.printf("%-5s %-10s %-10s %-5s %-10s %-10s\n", "상호명", "대표메뉴의 이름", "대표메뉴의 가격", "평점", "저장한 날짜",
+		System.out.printf("%-7s\t %-10s\t %-10s\t %-5s\t %-10s\t %-10s\n", "상호명", "대표메뉴의 이름", "대표메뉴의 가격", "평점",
+				"저장한 날짜",
 				"수정한 날짜");
 
 		printSortResult(resSort(rest, sortWay, updown));
@@ -62,10 +63,13 @@ public class RestPrint {
 				if (updown == 1) {
 					if (number[i] > number[j]) { // swap
 						swap(i, j, temp);
+						swapn(i, j, number);
+
 					}
 				} else {
 					if (number[i] < number[j]) { // swap
 						swap(i, j, temp);
+						swapn(i, j, number);
 					}
 				}
 
@@ -75,20 +79,26 @@ public class RestPrint {
 		return temp;
 	}
 
-	public void swap(int i, int j, String[][] rest) {
-		String[] temp = rest[i];
-		rest[i] = rest[j];
-		rest[j] = temp;
+	public void swap(int i, int j, String[][] temp) {
+		String[] t = temp[i];
+		temp[i] = temp[j];
+		temp[j] = t;
+	}
+
+	public void swapn(int i, int j, int[] number) {
+		int t = number[i];
+		number[i] = number[j];
+		number[j] = t;
 	}
 
 	public void printSortResult(String[][] rest) {
 		for (int i = 0; i < rest.length; i++) {
 			if (rest[i][0] != null && !rest[i][0].equals("")) {
-				System.out.printf("%-7s", rest[i][0]);
-				System.out.printf("%-13s", rest[i][1]);
-				System.out.printf("%-14s", rest[i][2]);
-				System.out.printf("%-6s", rest[i][3]);
-				System.out.printf("%-13s", rest[i][4]);
+				System.out.printf("%-7s\t", rest[i][0]);
+				System.out.printf("%-10s\t", rest[i][1]);
+				System.out.printf("%-10s\t", rest[i][2]);
+				System.out.printf("%-5s\t", rest[i][3]);
+				System.out.printf("%-10s\t", rest[i][4]);
 				System.out.printf("%-10s\n", rest[i][5]);
 			}
 		}
